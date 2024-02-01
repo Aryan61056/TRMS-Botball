@@ -1,0 +1,29 @@
+#include <kipr/wombat.h>
+
+void movement();
+
+int main()
+{
+
+    enable_servos();
+
+    int arm = 1;
+    int hand = 2;
+
+    int clench = 2000;
+    int open = 400;
+
+    int up = 145;
+    int down = 1270;
+
+    movement(arm,up);
+    movement(arm,down);
+    movement(hand, clench);
+
+    return 0;
+}
+
+void movement(device, angle){
+    set_servo_position(device,angle);
+    msleep(500);
+}
