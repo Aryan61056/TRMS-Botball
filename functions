@@ -57,14 +57,7 @@ void lineFollowUntilIntersection (){
         {
             motor(1,100); 
             motor(0,0);
-
-
-
-
         }
-
-
-
     }
 
 }
