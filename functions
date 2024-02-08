@@ -61,7 +61,22 @@ void lineFollowUntilIntersection (){
     }
 
 }
+void grab(){
+    enable_servos();
 
+    int arm = 1;
+    int hand = 2;
+
+    int clench = 2000;
+    int open = 400;
+
+    int up = 145;
+    int down = 1270;
+
+    set_servo_position(arm,up);
+    set_servo_position(arm,down);
+    set_servo_position(hand, clench);
+}
 int main(){
     // nothing
 }
