@@ -82,5 +82,5 @@ void grab(){
     msleep(500);
 }
 int main(){
-    grab();
+    //nothing
 }
