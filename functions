@@ -74,9 +74,13 @@ void grab(){
     int down = 1270;
 
     set_servo_position(arm,up);
+    set_servo_position(hand,open);
+    msleep(500);
     set_servo_position(arm,down);
+    msleep(500);
     set_servo_position(hand, clench);
+    msleep(500);
 }
 int main(){
-    // nothing
+    grab();
 }
