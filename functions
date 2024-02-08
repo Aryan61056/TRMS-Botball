@@ -1,5 +1,4 @@
 // where functions go...
-// where functions go...
 #include <kipr/wombat.h>
 
 // Function to turn left 
@@ -37,6 +36,37 @@ void moveBack(int moveBackAmount){
         motor(0,-100);
         motor(1,-100);
     }
+}
+// Function to line follow until intersection
+void lineFollowUntilIntersection (){
+    while(1){
+        if(analog(0) > 4000 && analog(1) > 4000){
+            break;
+        }
+        if(analog(0) < 4000 && analog(1) < 4000) {
+            motor(1, 100);
+            motor(0, 100);
+        }
+        if(analog(1)> 4000)
+        {
+            motor(1,0); 
+            motor(0,100);
+
+        }
+        if(analog(0)> 4000)
+        {
+            motor(1,100); 
+            motor(0,0);
+
+
+
+
+        }
+
+
+
+    }
+
 }
 
 int main(){
