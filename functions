@@ -1,0 +1,86 @@
+// where functions go...
+#include <kipr/wombat.h>
+
+// Function to turn left 
+void leftTurn(int turnLeftAmount){
+    cmpc(0);
+    cmpc(1);
+    while (gmpc(0) < turnLeftAmount && gmpc(1)>-(turnLeftAmount)){
+        motor(0,100);
+        motor(1,-100);
+    }
+}
+// Function to turn right
+void rightTurn(int turnRightAmount){
+    cmpc(0);
+    cmpc(1);
+    while (gmpc(0) > -turnRightAmount && gmpc(1) < turnRightAmount){
+        motor(0,-100);
+        motor(1,100);
+    }
+}
+// Function to move forward
+void moveForward(int moveAmount){
+    cmpc(0);
+    cmpc(1);
+    while (gmpc(0) < moveAmount && gmpc(1) < moveAmount){
+        motor(0,100);
+        motor(1,100);
+    }
+}
+// Function to move back 
+void moveBack(int moveBackAmount){
+    cmpc(0);
+    cmpc(1);
+    while (gmpc(0) > moveBackAmount && gmpc(1) > moveBackAmount){
+        motor(0,-100);
+        motor(1,-100);
+    }
+}
+// Function to line follow until intersection
+void lineFollowUntilIntersection (){
+    while(1){
+        if(analog(0) > 4000 && analog(1) > 4000){
+            break;
+        }
+        if(analog(0) < 4000 && analog(1) < 4000) {
+            motor(1, 100);
+            motor(0, 100);
+        }
+        if(analog(1)> 4000)
+        {
+            motor(1,0); 
+            motor(0,100);
+
+        }
+        if(analog(0)> 4000)
+        {
+            motor(1,100); 
+            motor(0,0);
+        }
+    }
+
+}
+void grab(){
+    enable_servos();
+
+    int arm = 1;
+    int hand = 2;
+
+    int clench = 2000;
+    int open = 400;
+
+    int up = 145;
+    int down = 1270;
+
+    set_servo_position(arm,up);
+    set_servo_position(hand,open);
+    msleep(500);
+    set_servo_position(arm,down);
+    msleep(500);
+    set_servo_position(hand, clench);
+    msleep(500);
+}
+int main(){
+    //nothing
+}
